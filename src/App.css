@@ -1,38 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 .App {
-  text-align: center;
+  height: 100vh; 
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: relative; 
+  align-items: center;
+  justify-content: center;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
   min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(90deg, #5603AD 0%, #5603AD 100%);
+  overflow-y: auto;
+}
+
+.start-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  background-color: #F0FFF1;
+  border: none;
+  border-radius: 8px; 
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); 
+}
+
+.start-button:hover {
+  background-color: #F0FFF1;
+  transform: scale(1.1); 
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.start-button:active {
+  transform: scale(0.95); 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+
+.start-camera-button,
+.stop-camera-button,
+.back-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: F0FFF1;
+  border: none;
+  border-radius: 8px; 
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); 
+}
+
+.stop-camera-button {
+  background-color: #508C9B; 
+}
+
+.stop-camera-button:hover {
+  background-color: #335c66; 
+  transform: scale(1.1);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-button {
+  color: black;
+  background-color: #F0FFF1; 
+}
+
+.back-button:hover {
+  background-color: #F0FFF1;
+  transform: scale(1.1);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.camera-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto; 
+  height: auto; 
+  max-width: 100%; 
+  border: 4px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: black; 
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.camera-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  height: 100%; 
+}
+
+.camera-container canvas, .camera-container video {
+  width: 100%; 
+  height: auto; 
+  object-fit: contain; 
+}
+
+.App2 {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: center; 
+  position: relative;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.camera-frame:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+select {
+  margin: 20px 0;
+  padding: 10px;
+  font-size: 16px;
+  background-color: white;
+  border: 2px solid #9f3939;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+select:hover {
+  border-color: #335c66; 
+  transform: scale(1.05); 
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  color: #000000;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  
+}
+
+.app2_h1 {
+  font-size: 3rem;
+  margin-bottom: 3px;
+  margin-top: 0px;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.note {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+
+button {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+button:active {
+  transform: scale(0.95); 
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-camera-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  background-color: #F0FFF1;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-camera-button:hover {
+  background-color: #F0FFF1;
+  transform: scale(1.1); 
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-camera-button:active {
+  transform: scale(0.95); 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-camera-button.toggle-on {
+  background-color: #000000; 
+}
+
+.toggle-camera-button.toggle-on:hover {
+  background-color: #030303;
+}
+
+
+.frame {
+  background-color: #B3E9C7;
+  border: 3px solid;
+  border-radius: 20px; 
+  padding: 20px 40px; 
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
+  text-align: center; 
+  max-width: 700px; 
+}
+
+.crash-visual {
+  animation: fadeOut 1s ease-out forwards;
+}
+
+.snare-visual {
+  animation: fadeOut 0.8s ease-out forwards;
+}
+
+.hihat-visual {
+  animation: fadeOut 1.2s ease-out forwards;
+}
+
+.cymbal-visual {
+  animation: fadeOut 1.2s ease-out forwards;
+}
+
+.hihat-visual {
+  animation: fadeOut 1.2s ease-out forwards;
+}
+
+.bass-visual {
+  animation: fadeOut 1.2s ease-out forwards;
+}
+
+
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 0;
   }
 }
+
+.info-box {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.info-box h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.info-box ul {
+  text-align: left;
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+
+.rhap_header {
+  position: relative;
+  width: 100%; /* Adjust to fit the player's header */
+  height: 1.5rem; /* Adjust to fit the text height */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: #000; /* Optional: Match your player styling */
+}
+
+.scroll-container {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollText 10s linear infinite; /* Adjust duration for speed */
+}
+
+.scroll-container span {
+  display: inline-block;
+  padding-right: 2rem; /* Space between duplicates */
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0); /* Start from the beginning */
+  }
+  100% {
+    transform: translateX(-50%); /* Move halfway (length of content) */
+  }
+}
+
+.rhap_header .scroll-container {
+  display: flex;
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.rhap_header .scroll-container span {
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+
+
+.rhap_container {
+  background-color: #000;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.controls {
+  display: flex;
+  flex-direction: row; /* Tüm elemanları yatayda hizala */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px; /* Elemanlar arası boşluk */
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column; /* Butonları dikeyde hizala */
+  align-items: center;
+  gap: 10px; /* Butonlar arası boşluk */
+}
+
+.additional-controls {
+  display: flex;
+  flex-direction: row; /* Select ve music player'ı yatayda hizala */
+  gap: 20px; /* Elemanlar arası boşluk */
+  align-items: center;
+}
+
+/* Camera Selection */
+.camera-selection {
+  display: flex;
+  flex-direction: column; /* Dikey hizalama için */
+  align-items: flex-start;
+}
+
+.camera-selection label {
+  font-size: 14px;
+  margin-bottom: 5px; /* Label ile select arasında boşluk */
+  color: white;
+  display: block; /* Üzerinde görünmesi için */
+}
+
+.camera-selection select {
+  width: 250px; /* Sabit genişlik */
+  max-width: 240px; /* Maksimum genişlik */
+  overflow: hidden; /* Uzun metinler taşmasın */
+  text-overflow: ellipsis; /* Taşan metni ... şeklinde göster */
+  white-space: nowrap; /* Tek satırda kalsın */
+  padding: 10px;
+  font-size: 16px;
+  background-color: white;
+  border: 2px solid #9f3939;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.camera-selection select:hover {
+  border-color: #335c66;
+  transform: scale(1.05);
+}
+
+
+
+.music-player {
+  width: 400px; /* Fixed width */
+  height: 120px; /* Fixed height */
+  flex: none; /* Disable flex resizing */
+  margin: 10px auto;
+  background-color: #000; /* Optional for better visibility */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Hide overflowing content */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Consistent shadow */
+}
+
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column; /* Daha küçük ekranlarda tüm elemanları dikeyde hizala */
+  }
+  .additional-controls {
+    flex-direction: column; /* Select ve player'ı dikeyde hizala */
+  }
+}
+
